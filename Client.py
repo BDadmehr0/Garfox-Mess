@@ -1,12 +1,12 @@
 import socket
+import thrading
 
 target_host = "127.0.0.1"
-target_port = 80
+target_port = 1234
 
-client = socket.socket(socket.AF_INET, socket.SOCK.DGRAM)
+client = []
 
-client.sendto("AAABBBCCC", (target_host,target_port))
-
-data, addr = client.recvfrom(4096)
-
-print data
+def handel_client():
+  while True:
+    try:
+      mesage = client_socket.recv(1024).decode()
