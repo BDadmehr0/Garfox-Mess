@@ -20,6 +20,7 @@ except ConnectionRefusedError:
                 print('The server is currently unavailable or the port specified to connect to the server is incorrect')
         else:
             exit()
+    exit()
         
 
 def receive():
