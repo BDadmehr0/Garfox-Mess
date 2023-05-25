@@ -9,9 +9,9 @@ try:
     client.connect((HOST, PORT))
 except ConnectionRefusedError:
     print('The server is currently unavailable or the port specified to connect to the server is incorrect')
-    rety = input('try again y/N :')
 
     for i in range(5): # Time Out 5 again
+        rety = input('try again y/N :')
         if rety == 'y':
             try:
                 client = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
