@@ -29,6 +29,7 @@ def receive():
             message = client.recv(1024).decode('utf-8')
             properties_start = message.find("[")
             properties_end = message.find("]")
+
             if properties_start != -1 and properties_end != -1:
                 properties_str = message[properties_start:properties_end+1]
                 properties = eval(properties_str)

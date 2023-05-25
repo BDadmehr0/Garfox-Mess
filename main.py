@@ -20,14 +20,19 @@ class main:
 
         print(f'''
         Welcome Garfox Messanger 
-        Your IP Public {public_ip} Local {local_ip} ''')
+        Crated By Dadmehr With Coffi
+        Your IP Public {public_ip} Local {local_ip}\n''')
 
     
-    def open_mode(mode):
-        if mode == '1':
+    def open_mode():
+        host_mode_str = ['Host','host','h']
+        client_mode_str = ['Client','client','c']
+
+        mode = input('select Mode [Host / Client]\n:')
+        if mode in host_mode_str:
             print('Mode = Host')
             open_server = Mode.Server()
-        elif mode == "2":
+        elif mode in client_mode_str:
             print('Mode = Client')
             open_client = Mode.Client()
         else:
@@ -36,4 +41,4 @@ class main:
 if __name__ == "__main__":
     os.system('clear')
     main.Banner()
-    main.open_mode(mode='')
+    main.open_mode()
