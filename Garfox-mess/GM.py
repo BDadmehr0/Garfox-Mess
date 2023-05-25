@@ -20,7 +20,7 @@ class main:
 
         print(f'''
         Welcome Garfox Messanger 
-        Crated By Dadmehr With Coffi
+        Crated By Dadmehr With coffee
         Your IP Public {public_ip} Local {local_ip}\n''')
 
     
