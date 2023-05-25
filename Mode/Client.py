@@ -4,8 +4,23 @@ import threading
 HOST = '127.0.0.1'
 PORT = 5500
 
-client = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-client.connect((HOST, PORT))
+try:
+    client = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+    client.connect((HOST, PORT))
+except ConnectionRefusedError:
+    print('The server is currently unavailable or the port specified to connect to the server is incorrect')
+    rety = input('try again y/N :')
+
+    for i in range(5): # Time Out 5 again
+        if rety == 'y':
+            try:
+                client = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+                client.connect((HOST, PORT))
+            except ConnectionRefusedError:
+                print('The server is currently unavailable or the port specified to connect to the server is incorrect')
+        else:
+            exit()
+        
 
 def receive():
     while True:
@@ -41,6 +56,8 @@ def send(client, properties):
             recipient.send(f"{str(properties)}{message}".encode('utf-8'))
         else:
             client.send(f"{str(properties)}{message}".encode('utf-8'))
+
+properties = {'name': 'Client', 'address': (HOST, PORT)}
 
 receive_thread = threading.Thread(target=receive)
 send_thread = threading.Thread(target=send, args=(client, properties))
