@@ -25,7 +25,7 @@ def receive():
             client.close()
             break
 
-def send(client):
+def send(client, properties):
     while True:
         message = input()
         if message.startswith('/private '):
@@ -43,7 +43,7 @@ def send(client):
             client.send(f"{str(properties)}{message}".encode('utf-8'))
 
 receive_thread = threading.Thread(target=receive)
-send_thread = threading.Thread(target=send, args=(client,))
+send_thread = threading.Thread(target=send, args=(client, properties))
 
 receive_thread.start()
 send_thread.start()
