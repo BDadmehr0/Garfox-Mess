@@ -31,4 +31,19 @@ def send():
         if message.startswith('/private '):
             recipient_name, message = message[9:].split(') ', 1)
             for client, props in properties.items():
-                if props['name'] ==ادامه کد کلاینت:
+                if props['name'] == recipient_name:
+                    recipient = client
+                    message = f"(private message) {message}"
+                    break
+            else:
+                print("Recipient not found!")
+                continue
+            recipient.send(f"{str(properties)}{message}".encode('utf-8'))
+        else:
+            client.send(f"{str(properties)}{message}".encode('utf-8'))
+
+receive_thread = threading.Thread(target=receive)
+send_thread = threading.Thread(target=send)
+
+receive_thread.start()
+send_thread.start()
