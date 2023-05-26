@@ -1,8 +1,8 @@
 #!/bin/bash
 
-# log () {
-#     clear
-# }
+log () {
+    echo LOG
+}
 
 log_loader () {
     
@@ -12,6 +12,8 @@ log_loader () {
     then
         echo "Create Log"
         log
+    else
+        echo "Log Load"
     fi
 }
 
