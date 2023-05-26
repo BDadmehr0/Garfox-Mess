@@ -1,11 +1,11 @@
 #!/bin/bash
 
-log () {
-    clear
-}
+# log () {
+#     clear
+# }
 
 log_loader () {
-    clear
+    
     log_load=$(cat ./log/s.json)
 
     if [ -z "$log_load" ]
