@@ -2,13 +2,12 @@ import datetime
 import platform
 import socket
 
-hostname = socket.gethostname()
-os = platform.system()
-
+hostname = str(socket.gethostname())
+os = str(platform.system())
 now = str(datetime.datetime.now())
 
 
-fruom = """
+fruom = str("""
 {
     "name":"Garfox-mess",
     "version":"0.0.1",
@@ -20,6 +19,6 @@ fruom = """
         "host":"{}"
     }
 }
-"""
+""")
 
 print(fruom)
