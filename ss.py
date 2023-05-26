@@ -3,13 +3,10 @@ import platform
 import socket
 
 hostname = socket.gethostname()
-print("Hostname:", hostname)
-
 os = platform.system()
-print(os)
 
-now = datetime.datetime.now()
-print(now)
+now = str(datetime.datetime.now())
+
 
 fruom = """
 {
@@ -24,3 +21,5 @@ fruom = """
     }
 }
 """
+
+print(fruom)
