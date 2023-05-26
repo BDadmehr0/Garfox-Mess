@@ -11,7 +11,6 @@ log_loader () {
     if [ -z "$log_load" ]
     then
         echo "Create Log"
-        log
     else
         echo "Log Load"
     fi
