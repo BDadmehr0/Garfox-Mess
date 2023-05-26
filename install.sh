@@ -1,18 +1,24 @@
 #!/bin/bash
 
 log () {
-    echo Create Log
+    version = "1.0.0"
+    furme = ""
 }
 
 log_loader () {
     clear
-    cat ./log/s.json
+    log_load = cat ./log/s.json
+
+    if [ $log_load == "" ]
+    then
+        echo "Crate Log"
+        log
+    fi
 }
 
 installion () {
     apt-get install -y python3-pip
     apt-get install -y python3
-
 
     pip3 install -r requirements.txt
 
@@ -28,5 +34,3 @@ installion () {
 installion
 
 log_loader
-
-log
