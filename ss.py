@@ -7,8 +7,7 @@ os = str(platform.system())
 now = str(datetime.datetime.now())
 
 
-fruom = str('''
-{
+fruom = str('''{
     "name":"Garfox-mess",
     "version":"0.0.1",
     "production-date":"2023-05-26",
@@ -21,4 +20,6 @@ fruom = str('''
 }
 ''')
 
-print(fruom)
+f = open("./log/install.json", "w")
+f.write(fruom)
+f.close()

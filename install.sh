@@ -6,7 +6,7 @@ log () {
 
 log_loader () {
     
-    log_load=$(cat ./log/s.json)
+    log_load=$(cat ./log/log.json)
 
     if [ -z "$log_load" ]
     then
