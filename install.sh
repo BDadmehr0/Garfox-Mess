@@ -1,26 +1,31 @@
 #!/bin/bash
 
 log () {
-    echo Log
+    echo Create Log
 }
 
 log_loader () {
     clear
+    cat ./log/s.json
 }
 
-# apt-get install -y python3-pip
-# apt-get install -y python3
+installion () {
+    apt-get install -y python3-pip
+    apt-get install -y python3
 
 
-# pip3 install -r requirements.txt
+    pip3 install -r requirements.txt
 
-# cp -r ./Garfox-mess /opt/Garfox-mess
+    cp -r ./Garfox-mess /opt/Garfox-mess
 
-# ln -s /opt/Garfox-mess/GM.py /usr/local/bin/myapp
+    ln -s /opt/Garfox-mess/GM.py /usr/local/bin/myapp
 
-# python3 /opt/Garfox-mess/GM.py
+    python3 /opt/Garfox-mess/GM.py
 
-# echo "Install Done"
+    echo "Install Done"
+}
+
+installion
 
 log_loader
 
