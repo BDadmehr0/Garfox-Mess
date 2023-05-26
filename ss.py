@@ -7,18 +7,18 @@ os = str(platform.system())
 now = str(datetime.datetime.now())
 
 
-fruom = str("""
+fruom = str('''
 {
     "name":"Garfox-mess",
     "version":"0.0.1",
     "production-date":"2023-05-26",
-    "last-update":"{}",
+    "last-update":"'''+now+'''",
 
     "system" : {
-        "OS":"{}",
-        "host":"{}"
+        "OS":"'''+os+'''",
+        "host":"'''+hostname+'''"
     }
 }
-""")
+''')
 
 print(fruom)

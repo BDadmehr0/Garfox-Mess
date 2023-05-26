@@ -1,13 +1,12 @@
 #!/bin/bash
 
 log () {
-    version = "1.0.0"
-    furme = ""
+    clear
 }
 
 log_loader () {
     clear
-    log_load = cat ./log/s.json
+    $log_load = cat ./log/s.json
 
     if [ $log_load == "" ]
     then
@@ -30,7 +29,5 @@ installion () {
 
     echo "Install Done"
 }
-
-installion
 
 log_loader
