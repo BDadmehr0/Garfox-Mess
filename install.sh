@@ -1,11 +1,11 @@
 #!/bin/bash
 
-function log {
-
+log () {
+    echo Log
 }
 
-function log_loader {
-
+log_loader () {
+    clear
 }
 
 # apt-get install -y python3-pip
@@ -22,4 +22,6 @@ function log_loader {
 
 # echo "Install Done"
 
-greet log
+log_loader
+
+log
