@@ -6,11 +6,11 @@ log () {
 
 log_loader () {
     clear
-    $log_load = cat ./log/s.json
+    log_load=$(cat ./log/s.json)
 
-    if [ $log_load == "" ]
+    if [ -z "$log_load" ]
     then
-        echo "Crate Log"
+        echo "Create Log"
         log
     fi
 }
