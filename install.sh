@@ -6,21 +6,21 @@ log () {
     hostname=$(hostname)
     os=$(uname)
 
-    fruom=$(cat <<EOF
-    {
-        "name":"Garfox-mess",
-        "version":"0.0.1",
-        "production-date":"2023-05-26",
-        "last-update":"$now",
-        "system" : {
-            "OS":"$os",
-            "host":"$hostname"
-        }
+    from=$(cat <<EOF
+{
+    "name":"Garfox-mess",
+    "version":"0.0.1",
+    "production-date":"2023-05-26",
+    "last-update":"$now",
+    "system" : {
+        "OS":"$os",
+        "host":"$hostname"
     }
-    EOF
-    )
+}
+EOF
+)
 
-    echo "$fruom" > ./log/install.json
+    echo "$from" > ./log/install.json
 }
 
 log_loader () {
@@ -29,25 +29,33 @@ log_loader () {
 
     if [ -z "$log_load" ]
     then
-        echo "Create Log"
+        echo "Log file not found. Creating new log file."
     else
-        echo "Log Load"
+        echo "Log file found."
     fi
 }
 
-installion () {
+installation () {
+    echo "Installing python3-pip..."
     apt-get install -y python3-pip
+    echo "Installing python3..."
     apt-get install -y python3
 
+    echo "Installing required packages..."
     pip3 install -r requirements.txt
 
+    echo "Copying Garfox-mess to /opt..."
     cp -r ./Garfox-mess /opt/Garfox-mess
 
+    echo "Creating symlink..."
     ln -s /opt/Garfox-mess/GM.py /usr/local/bin/myapp
 
+    echo "Starting Garfox-mess..."
     python3 /opt/Garfox-mess/GM.py
 
-    echo "Install Done"
+    echo "Installation completed."
 }
 
 log_loader
+log
+installation
