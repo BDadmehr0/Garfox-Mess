@@ -1,4 +1,5 @@
-from Garfox_mess import Mode
+from Garfox_mess.Mode.Server import main_server
+from Garfox_mess.Mode.Client import main_client
 import urllib.request
 import socket
 import os
@@ -31,10 +32,10 @@ class main:
         mode = input('select Mode [Host / Client]\n:')
         if mode in host_mode_str:
             print('Mode = Host')
-            open_server = Mode.Server.main_server()
+            open_server = main_server()
         elif mode in client_mode_str:
             print('Mode = Client')
-            open_client = Mode.Client()
+            open_client = main_client()
         else:
             exit()
 
