@@ -37,7 +37,7 @@ installation () {
     ln -s /opt/Garfox-mess/GM.py /usr/local/bin/myapp
 
     echo "Starting Garfox-mess..."
-    python3 /opt/Garfox-mess/GM.py
+#    python3 /opt/Garfox-mess/GM.py
 
     echo "Installation completed."
 }
