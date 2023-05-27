@@ -3,10 +3,17 @@ def main_server():
     import threading
     from colorama import Fore, Style
     import os
+    import urllib.request
+
+    def get_public_ip():
+        url = 'https://api.ipify.org'
+        response = urllib.request.urlopen(url)
+        ip = response.read().decode()
+        return ip
 
     # localhost 127.0.0.1
-    HOST = '127.0.0.1'
-    PORT = 5510
+    HOST = get_public_ip()
+    PORT = 5050
 
     try:
         server = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
@@ -23,6 +30,7 @@ def main_server():
                     server.bind((HOST, PORT))
                 except OSError:
                     print('Port Error: plase enter password and auto change port')
+                    os.system('sudo lsof -i :5510')
             else:
                 exit()
         exit()

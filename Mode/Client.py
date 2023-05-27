@@ -2,10 +2,18 @@ def main_client():
     import socket
     import threading
     import urllib.request
+    import os
+
+    def get_public_ip():
+        url = 'https://api.ipify.org'
+        response = urllib.request.urlopen(url)
+        ip = response.read().decode()
+        return ip
+
 
     # LocalHost 127.0.0.1
-    HOST = '127.0.0.1'
-    PORT = 5510
+    HOST = get_public_ip()
+    PORT = 5050
 
     try:
         client = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
