@@ -4,6 +4,7 @@ import urllib.request
 import socket
 from colorama import Fore, Style
 import os
+from datetime import datetime
 
 class main:
     def Banner():
@@ -16,7 +17,8 @@ class main:
             url = 'https://api.ipify.org'
             response = urllib.request.urlopen(url)
             return response.read().decode('utf-8')
-
+        
+        time = str(datetime.today())
         public_ip = get_public_ip()
         local_ip = get_local_ip()
 
@@ -29,9 +31,9 @@ class main:
 ░░███  ░░███  ███░░███  ░███       ░███     ░███ ░███  ███░░░███ 
  ░░█████████ ░░████████ █████      █████    ░░██████  █████ █████
   ░░░░░░░░░   ░░░░░░░░ ░░░░░      ░░░░░      ░░░░░░  ░░░░░ ░░░░░ 
-  Welcome '''+Fore.RED+Style.BRIGHT+'''Garfox '''+Fore.WHITE+Style.BRIGHT+'''Messanger V1.0.0
+  Welcome '''+Fore.RED+Style.BRIGHT+'''Garfox '''+Fore.WHITE+Style.BRIGHT+'''Messanger '''+Style.RESET_ALL+'''V1.0.0''''''
   Created by Dadmehr With coffee
-  Your IP Public'''+Style.BRIGHT+''' {public_ip} Local '''+Style.BRIGHT+'''{local_ip}\n''')
+  Your IP Public'''+Style.BRIGHT+''' '''+public_ip+''' '''+Style.RESET_ALL+'''\n  Time '''+Style.BRIGHT+''''''+time+'''\n'''+Style.RESET_ALL+'''''')
 
     
     def open_mode():
