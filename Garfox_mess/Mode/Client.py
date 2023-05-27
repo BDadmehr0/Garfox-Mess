@@ -3,7 +3,7 @@ def main_client():
     import threading
 
     HOST = '127.0.0.1'
-    PORT = 5500
+    PORT = 5510
 
     try:
         client = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
@@ -26,44 +26,16 @@ def main_client():
 
     def receive():
         while True:
-            try:
-                message = client.recv(1024).decode('utf-8')
-                properties_start = message.find("[")
-                properties_end = message.find("]")
+            message_recv = client.recv(1024).decode('utf-8')
+            print(f"{message_recv}")
 
-                if properties_start != -1 and properties_end != -1:
-                    properties_str = message[properties_start:properties_end+1]
-                    properties = eval(properties_str)
-                    message = message[:properties_start] + message[properties_end+1:]
-                    print(f"{properties['name']} ({properties['address'][0]}:{properties['address'][1]}): {message}")
-                else:
-                    print(message)
-            except:
-                print("Error occurred!")
-                client.close()
-                break
-
-    def send(client, properties):
+    def send():
         while True:
-            message = input()
-            if message.startswith('/private '):
-                recipient_name, message = message[9:].split(') ', 1)
-                for client, props in properties.items():
-                    if props['name'] == recipient_name:
-                        recipient = client
-                        message = f"(private message) {message}"
-                        break
-                else:
-                    print("Recipient not found!")
-                    continue
-                recipient.send(f"{str(properties)}{message}".encode('utf-8'))
-            else:
-                client.send(f"{str(properties)}{message}".encode('utf-8'))
-
-    properties = {'name': 'Client', 'address': (HOST, PORT)}
+            message_send = input('Client-Message $: ')
+            client.send(f"{message_send}".encode('utf-8'))
 
     receive_thread = threading.Thread(target=receive)
-    send_thread = threading.Thread(target=send, args=(client, properties))
+    send_thread = threading.Thread(target=send)
 
     receive_thread.start()
     send_thread.start()
