@@ -1,4 +1,4 @@
-def main_server():
+def main_client():
     import socket
 
     client_socket = socket.socket()

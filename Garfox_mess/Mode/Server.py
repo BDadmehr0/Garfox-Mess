@@ -1,4 +1,4 @@
-def main_client():
+def main_server():
     import socket,select
 
     port = 12345
