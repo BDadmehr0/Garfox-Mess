@@ -7,7 +7,7 @@ os=$(uname)
 data=$(cat <<EOF
 {
     "name": "Garfox-mess",
-    "version": "0.0.1",
+    "version": "1.0.0",
     "production-date": "2023-05-26",
     "last-update": "$now",
     "system": {

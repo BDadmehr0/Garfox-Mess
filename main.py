@@ -2,6 +2,7 @@ from Garfox_mess.Mode.Server import main_server
 from Garfox_mess.Mode.Client import main_client
 import urllib.request
 import socket
+from colorama import Fore, Style
 import os
 
 class main:
@@ -20,9 +21,9 @@ class main:
         local_ip = get_local_ip()
 
         print(f'''
-        Welcome Garfox Messanger V0.0.1
+        Welcome '''+Fore.RED+Style.BRIGHT+'''Garfox '''+Fore.WHITE+Style.BRIGHT+'''Messanger V1.0.0
         Created by Dadmehr With coffee
-        Your IP Public {public_ip} Local {local_ip}\n''')
+        Your IP Public'''+Style.BRIGHT+''' {public_ip} Local '''+Style.BRIGHT+'''{local_ip}\n''')
 
     
     def open_mode():

@@ -23,7 +23,7 @@ def main_server():
 
     def send(client):
         while True:
-            message_send = input('Host-Message $:\nClient-Message')
+            message_send = input('Host-Message $:\nClient : ')
             if message_send == 'exit':
                 client.close()
                 exit()
