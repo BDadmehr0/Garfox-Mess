@@ -1,57 +1,31 @@
-def main_server():
-    import socket
-    import threading
+def main_client():
+    import socket,select
 
-    HOST = '127.0.0.1'
-    PORT = 5500
-
-    server = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-    server.bind((HOST, PORT))
-
-    clients = []
-    properties = {}
-    
-    def broadcast(message):
-        for client in clients:
-            client.send(message)
-
-    def handle_client(client, address):
-        properties[client] = {"address": address, "name": ""}
-        while True:
-            try:
-                message = client.recv(1024).decode('utf-8')
-                if message.startswith('/name '):
-                    name = message[6:]
-                    properties[client]["name"] = name
-                    message = f"{name} joined the chat!"
-                elif message.startswith('/private '):
-                    recipient_name, message = message[9:].split(') ', 1)
-                    for client, props in properties.items():
-                        if props['name'] == recipient_name:
-                            recipient = client
-                            message = f"(private message) {message}"
-                            break
-                else:
-                    print("Recipient not found!")
+    port = 12345
+    socket_list = []
+    users = {}
+    server_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+    server_socket.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
+    server_socket.bind(('',port))
+    server_socket.listen(5)
+    socket_list.append(server_socket)
+    while True:
+        ready_to_read,ready_to_write,in_error = select.select(socket_list,[],[],0)
+        for sock in ready_to_read:
+            if sock == server_socket:
+                connect, addr = server_socket.accept()
+                socket_list.append(connect)
+                connect.send("You are connected from:" + str(addr))
+            else:
+                try:
+                    data = sock.recv(2048)
+                    if data.startswith("#"):
+                        users[data[1:].lower()]=connect
+                        print("User " + data[1:] +" added.")
+                        connect.send("Your user detail saved as : "+str(data[1:]))
+                    elif data.startswith("@"):
+                        users[data[1:data.index(':')].lower()].send(data[data.index(':')+1:])
+                except:
                     continue
-                    recipient.send(f"{str(properties)}{message}".encode('utf-8'))
-                    broadcast(f"{str(properties)}{message}".encode('utf-8'))
-            except:
-                index = clients.index(client)
-                clients.remove(client)
-                del properties[client]
-                client.close()
-                break
 
-    def start():
-        server.listen()
-        print("Server isrunning...")
-        while True:
-            client, address = server.accept()
-            clients.append(client)
-            print(f"Connected with {str(address)}")
-
-            thread = threading.Thread(target=handle_client, args=(client, address))
-            thread.start()
-
-    start()
+    server_socket.close()
