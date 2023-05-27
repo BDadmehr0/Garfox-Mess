@@ -23,7 +23,7 @@ def main_server():
 
     def send(client):
         while True:
-            message_send = input('Host-Message $:\nClient : ')
+            message_send = input('Host-Message $:\n ')
             if message_send == 'exit':
                 client.close()
                 exit()
@@ -37,7 +37,7 @@ def main_server():
 
         while True:
             client, address = server.accept()
-            print(f"Connected with {str(address)}")
+            print(f"join {str(address)}")
 
             thread1 = threading.Thread(target=recv, args=(client,))
             thread2 = threading.Thread(target=send, args=(client,))

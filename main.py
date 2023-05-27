@@ -43,11 +43,9 @@ class main:
         mode = input('select Mode [Host / Client]\n:')
         if mode in host_mode_str:
             os.system('clear')
-            print('Mode = Host')
             open_server = main_server()
         elif mode in client_mode_str:
             os.system('clear')
-            print('Mode = Client')
             open_client = main_client()
         else:
             exit()

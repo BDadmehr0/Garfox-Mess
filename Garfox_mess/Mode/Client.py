@@ -31,7 +31,7 @@ def main_client():
 
     def send():
         while True:
-            message_send = input('Client-Message $: ')
+            message_send = input('Client-Message $: \n')
             if message_send == 'exit':
                 client.close()
                 exit()

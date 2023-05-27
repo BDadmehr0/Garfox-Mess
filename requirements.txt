@@ -1,1 +1,2 @@
-
+colorama==0.4.3
+datetime==5.1
