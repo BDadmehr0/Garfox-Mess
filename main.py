@@ -31,7 +31,7 @@ class main:
         mode = input('select Mode [Host / Client]\n:')
         if mode in host_mode_str:
             print('Mode = Host')
-            open_server = Mode.Server()
+            open_server = Mode.Server.main_server()
         elif mode in client_mode_str:
             print('Mode = Client')
             open_client = Mode.Client()
