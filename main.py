@@ -1,10 +1,11 @@
-from Garfox_mess.Mode.Server import main_server
-from Garfox_mess.Mode.Client import main_client
+from Mode.Server import main_server
+from Mode.Client import main_client
+from colorama import Fore, Style
+from datetime import datetime
+
+import os
 import urllib.request
 import socket
-from colorama import Fore, Style
-import os
-from datetime import datetime
 
 class main:
     def Banner():

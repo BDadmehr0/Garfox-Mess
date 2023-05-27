@@ -30,14 +30,9 @@ installation () {
     echo "Installing required packages..."
     pip3 install -r requirements.txt
 
-    echo "Copying Garfox-mess to /opt..."
-    cp -r ./Garfox-mess /opt/Garfox-mess
 
-    echo "Creating symlink..."
-    ln -s /opt/Garfox-mess/GM.py /usr/local/bin/myapp
-
-    echo "Starting Garfox-mess..."
-#    python3 /opt/Garfox-mess/GM.py
+#    echo "Starting Garfox-mess..."
+#   python3 /opt/Garfox-mess/GM.py
 
     echo "Installation completed."
 }
@@ -63,4 +58,3 @@ else
 fi
 
 echo "$data" > ./log/log.json
-

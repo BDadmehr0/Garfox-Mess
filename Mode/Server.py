@@ -4,15 +4,28 @@ def main_server():
     from colorama import Fore, Style
     import os
 
+    # localhost 127.0.0.1
     HOST = '127.0.0.1'
     PORT = 5510
 
-    server = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
     try:
+        server = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
         server.bind((HOST, PORT))
     except OSError:
         print('Port Error: plase enter password and auto change port')
         os.system('sudo lsof -i :5510')
+
+        for i in range(5): # Time Out 5 again
+            rety = input('try again y/N :')
+            if rety == 'y':
+                try:
+                    server = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+                    server.bind((HOST, PORT))
+                except OSError:
+                    print('Port Error: plase enter password and auto change port')
+            else:
+                exit()
+        exit()
 
 
     def recv(client):
