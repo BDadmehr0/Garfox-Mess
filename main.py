@@ -1,4 +1,4 @@
-import Mode
+from Garfox_mess import Mode
 import urllib.request
 import socket
 import os
