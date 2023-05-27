@@ -32,7 +32,12 @@ def main_client():
     def send():
         while True:
             message_send = input('Client-Message $: ')
-            client.send(f"{message_send}".encode('utf-8'))
+            if message_send == 'exit':
+                server.shutdown()
+                client.shutdown()
+                exit()
+            else:
+                client.send(f"{message_send}".encode('utf-8'))
 
     receive_thread = threading.Thread(target=receive)
     send_thread = threading.Thread(target=send)
