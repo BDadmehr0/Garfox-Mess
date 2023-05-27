@@ -19,8 +19,8 @@ class main:
         local_ip = get_local_ip()
 
         print(f'''
-        Welcome Garfox Messanger 
-        Crated By Dadmehr With coffee
+        Welcome Garfox Messanger V0.0.1
+        Created by Dadmehr With coffee
         Your IP Public {public_ip} Local {local_ip}\n''')
 
     
