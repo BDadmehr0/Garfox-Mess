@@ -18,8 +18,12 @@ def main_server():
     def send(client):
         while True:
             message_send = input('Host-Message $: ')
-            client.send(f"{message_send}".encode('utf-8'))
-
+            if message_send == 'exit':
+                client.shutdown()
+                exit()
+            else:
+                client.send(f"{message_send}".encode('utf-8'))
+        
     def start():
         server.listen()
         print("Server "+Fore.GREEN+Style.BRIGHT+"Online")
@@ -28,9 +32,12 @@ def main_server():
             client, address = server.accept()
             print(f"Connected with {str(address)}")
 
-            thread = threading.Thread(target=recv, args=(client,))
-            thread2 = threading.Thread(target=send, args=(client,))
-            thread.start()
+            thread1 = threading.Thread(target=recv, args=(client))
+            thread2 = threading.Thread(target=send, args=(client))
+            
+            thread1.start()
             thread2.start()
 
-    start()
+            
+    if __name__ == "__main__":
+        start()

@@ -33,8 +33,7 @@ def main_client():
         while True:
             message_send = input('Client-Message $: ')
             if message_send == 'exit':
-                server.shutdown()
-                client.shutdown()
+                client.close()
                 exit()
             else:
                 client.send(f"{message_send}".encode('utf-8'))
