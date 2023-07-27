@@ -3,7 +3,6 @@ import argparse
 from mods.server import run_server
 from mods.client import run_client
 
-
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="Messenger Server")
     parser.add_argument('-mod', type=str, help='Select Your service Mod | server & client')
