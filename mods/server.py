@@ -14,10 +14,7 @@ def handle_client(client_socket):
 
     client_socket.close()
 
-def run_server():
-    server_ip = '127.0.0.1'
-    server_port = 12345
-
+def run_server(server_ip, server_port):
     server = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
     server.bind((server_ip, server_port))
     server.listen(5)

@@ -1,17 +1,17 @@
+import argparse
+
 from mods.server import run_server
 from mods.client import run_client
 
-print('\n(1) Server\n(2) Client\n\n(00) Exit\n')
 
 if __name__ == "__main__":
-    Q = input('-> ')
+    parser = argparse.ArgumentParser(description="Messenger Server")
+    parser.add_argument('-mod', type=str, help='Select Your service Mod | server & client')
+    parser.add_argument('--ip', type=str, default='127.0.0.1', help="Server IP address")
+    parser.add_argument('--port', type=int, default=12345, help="Server port")
+    args = parser.parse_args()
 
-    if Q == '1':
-        run_server()
-    elif Q == '2':
-        run_client()
-    elif Q == '00':
-        print('\n\n')
-        exit()
+    if args.mod == 'server':
+        run_server(args.ip, args.port)
     else:
-        print(f'\n{Q}: Fail Command\n')
+        run_client(args.ip, args.port)
